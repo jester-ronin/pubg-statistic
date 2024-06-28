@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import "./AuthorizationPage.css"
+import "./authorizationPage.css"
 import { useDispatch } from 'react-redux';
-import { setName } from '../../redux/slice';
+import { setId } from '../../redux/slice';
+import { useNavigate } from 'react-router';
 
 const AuthorizationPage: React.FC = () => {
-    const dispatch = useDispatch()
-    const [inputValue, setInputValue] = useState("")
+    const dispatch = useDispatch();
+    const [inputValue, setInputValue] = useState("");
+    const navigate = useNavigate();
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(event.target.value);
@@ -16,7 +18,10 @@ const AuthorizationPage: React.FC = () => {
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
         console.log(inputValue);
-        dispatch(setName(inputValue));
+        if(inputValue) {
+            dispatch(setId(inputValue));
+            navigate(`/player/${inputValue}`);
+        }
     };
 
     return <div className='mainPage'>

@@ -1,0 +1,81 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.mainDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    /* Чтобы псевдоэлемент не выходил за пределы родительского контейнера */
+}
+
+.mainDiv::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("D:/JS/React/pubg-statistic/src/assets/pubg.jpg");
+    filter: blur(4px);
+    z-index: -1;
+}
+
+.playerImage {
+    width: 350px;
+    height: 650px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: white;
+}
+
+.userInfo {
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    color: black;
+}
+
+.additionalInfo {
+    margin-top: 10px;
+}
+
+.additionalInfoButton {
+    margin-top: 15px;
+}
+
+.backLink {
+    display: flex;
+    justify-content: end;
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+
+.p-2 {
+    color: black;
+    font-size: 25px;
+    margin-top: 10px;
+}
+
+.formStatistic {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    width: 850px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 1.0);
+    margin-top: 10px;
+    padding: 10px;
+    margin-bottom: 25px;
+}
