@@ -6,7 +6,7 @@ body {
     width: 100%;
 }
 
-.mainDiv {
+.main-div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,10 +15,9 @@ body {
     min-height: 100vh;
     width: 100%;
     overflow: hidden;
-    /* Чтобы псевдоэлемент не выходил за пределы родительского контейнера */
 }
 
-.mainDiv::before {
+.main-div::before {
     content: '';
     position: absolute;
     top: 0;
@@ -26,20 +25,18 @@ body {
     right: 0;
     bottom: 0;
     background-image: url("D:/JS/React/pubg-statistic/src/assets/pubg.jpg");
-    filter: blur(4px);
+    filter: blur(0.3vh);
     z-index: -1;
 }
 
-.playerImage {
-    width: 350px;
-    height: 650px;
+.player-image {
+    width: 37vh;
+    height: 68vh;
     border-style: solid;
-    border-width: 3px;
+    border-width: 0.5vh;
     border-color: white;
 }
 
-.userInfo {
-}
 
 h1 {
     display: flex;
@@ -47,35 +44,33 @@ h1 {
     color: black;
 }
 
-.additionalInfo {
-    margin-top: 10px;
+
+.additional-info-button {
+    margin-top: 1.5vh;
 }
 
-.additionalInfoButton {
-    margin-top: 15px;
-}
-
-.backLink {
+.back-link {
     display: flex;
     justify-content: end;
     text-decoration: none;
     color: black;
-    font-size: 20px;
+    font-size: 2.2vh;
 }
 
-.p-2 {
+.info-row {
     color: black;
-    font-size: 25px;
-    margin-top: 10px;
+    font-size: 2.5vh;
+    margin-top: 1.5vh;
 }
 
-.formStatistic {
+.form-statistic {
     background-color: rgba(255, 255, 255, 0.9);
-    padding: 20px;
-    border-radius: 10px;
-    width: 850px;
+    padding: 1.5vh ;
+    border-radius: 1vh;
+    width: 89vh;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 1.0);
-    margin-top: 10px;
-    padding: 10px;
-    margin-bottom: 25px;
+    margin-top: 1vh;
+    padding: 1vh;
+    margin-bottom: 2.5vh;
 }
+

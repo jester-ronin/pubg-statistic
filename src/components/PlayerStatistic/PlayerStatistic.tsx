@@ -10,9 +10,8 @@ import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 
 const PlayerStatistic: React.FC = () => {
-  const { playerName } = useParams<{ playerName: string }>();
   const [showDropDiv, setShowDropDiv] = useState(false);
-  const navigate = useNavigate();
+
 
 
   const toggleDropDiv = () => {
@@ -20,46 +19,45 @@ const PlayerStatistic: React.FC = () => {
   };
 
   return (
-    <div className='mainDiv'>
+    <div className='main-div'>
       <Container>
         <Row>
           <Col xs={4}>
-            <img className='playerImage' src="https://a-static.besthdwallpaper.com/pubg-the-game-wallpaper-1242x2208-73918_167.jpg" alt='playerImage' />
+            <img className='player-image' src="https://a-static.besthdwallpaper.com/pubg-the-game-wallpaper-1242x2208-73918_167.jpg" alt='playerImage' />
           </Col>
-          <Col className='userInfo'>
+          <Col className='user-info'>
             <h1>
               User Name
             </h1>
-            <Link className='backLink' to={"/"}>← Back to authorization</Link>
-            <Form className='formStatistic'>
+            <Link className='back-link' to={"/"}>← Back to authorization</Link>
+            <Form className='form-statistic'>
               <Stack gap={4}>
-                <div className="p-2">Wins : ??? </div>
-                <div className="p-2">Kills : ???</div>
-                <div className="p-2">Assists : ???</div>
-                <div className="p-2">Number of enemy players knocked : ???</div>
-                <div className="p-2">HeadshotKills : ???</div>
-                <div className="p-2">Top10s : ???</div>
+                <div className="info-row">Wins : ??? </div>
+                <div className="info-row">Kills : ???</div>
+                <div className="info-row">Assists : ???</div>
+                <div className="info-row">Number of enemy players knocked : ???</div>
+                <div className="info-row">HeadshotKills : ???</div>
+                <div className="info-row">Top10s : ???</div>
               </Stack>
             </Form>
-
           </Col>
         </Row>
         <Row>
           <Col>
             <Stack className='dropDiv' gap={3}>
-              <Button onClick={toggleDropDiv} className='additionalInfoButton btn btn-warning'>
+              <Button onClick={toggleDropDiv} className='additional-info-button btn btn-warning'>
                 {showDropDiv ? 'Hide additional information' : 'Show additional information'}
               </Button>
               {showDropDiv && (
-                <Form className='formStatistic'>
-                  <div className='additionalInfo'>
-                    <div className="p-2">Number of healing items used: ???</div>
-                    <div className="p-2">Number of boost items used: ???</div>
-                    <div className="p-2">Longest Time Survived: ???</div>
-                    <div className="p-2">Walk Distance: ???</div>
-                    <div className="p-2">Suicides: ???</div>
-                    <div className="p-2">TeamKills: ???</div>
-                    <div className="p-2">Vehicle Destroys: ???</div>
+                <Form className='form-statistic'>
+                  <div>
+                    <div className="info-row">Number of healing items used: ???</div>
+                    <div className="info-row">Number of boost items used: ???</div>
+                    <div className="info-row">Longest Time Survived: ???</div>
+                    <div className="info-row">Walk Distance: ???</div>
+                    <div className="info-row">Suicides: ???</div>
+                    <div className="info-row">TeamKills: ???</div>
+                    <div className="info-row">Vehicle Destroys: ???</div>
                   </div>
                 </Form>
               )}
