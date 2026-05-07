@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import "./authorizationPage.css"
-import { useDispatch } from 'react-redux';
-import { setId } from '../../redux/slice';
+import { setPlayerName } from '../../redux/slice';
 import { useNavigate } from 'react-router';
+import { useAppDispatch } from '../../redux/hooks';
 
 const AuthorizationPage: React.FC = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const [inputValue, setInputValue] = useState("");
     const navigate = useNavigate();
 
@@ -18,32 +18,36 @@ const AuthorizationPage: React.FC = () => {
 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
-        if (inputValue) {
-            dispatch(setId(inputValue));
-            navigate(`/player/${inputValue}`);
+        const playerName = inputValue.trim();
+
+        if (playerName) {
+            dispatch(setPlayerName(playerName));
+            navigate(`/player/${encodeURIComponent(playerName)}`);
         }
     };
 
-
-
-    return <div className='main-page'>
-        <Form className='form' onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Youre steam ID</Form.Label>
+    return <main className='main-page'>
+        <Form className='search-form' onSubmit={handleSubmit}>
+            <div className='search-form__header'>
+                <p>PUBG Statistics</p>
+                <h1>Find player stats</h1>
+            </div>
+            <Form.Group className="mb-3" controlId="playerName">
+                <Form.Label>Steam player name</Form.Label>
                 <Form.Control
                     type="text"
-                    placeholder="Enter ID"
+                    placeholder="Enter player name"
                     value={inputValue}
                     onChange={handleChange} />
                 <Form.Text className="text-muted">
-                    We'll never share your info with anyone else.
+                    Use the PUBG nickname from your Steam account.
                 </Form.Text>
             </Form.Group>
             <Button variant="warning" type="submit">
-                Submit
+                Search
             </Button>
         </Form>
-    </div>;
+    </main>;
 
 };
 

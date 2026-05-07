@@ -1,26 +1,61 @@
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-}
-
 .main-page {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
     width: 100%;
-    background-image: url("D:\JS\React\pubg-statistic\src\assets\pubg.jpg");
+    padding: 24px;
+    background-image:
+        linear-gradient(90deg, rgba(9, 12, 16, 0.82), rgba(9, 12, 16, 0.46)),
+        url("../../assets/pubg.jpg");
     background-size: cover;
-    background-position: center; 
+    background-position: center;
 }
 
-.form {
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 2.1vh; 
-    border-radius: 1vh;
-    width: 50vh;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 1.0); 
+.search-form {
+    width: min(100%, 420px);
+    padding: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+.search-form__header {
+    margin-bottom: 24px;
+}
+
+.search-form__header p {
+    margin: 0 0 6px;
+    color: #b47300;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.search-form__header h1 {
+    margin: 0;
+    color: #171717;
+    font-size: 32px;
+    line-height: 1.1;
+}
+
+.search-form .btn {
+    width: 100%;
+    font-weight: 700;
+}
+
+@media (max-width: 480px) {
+    .main-page {
+        padding: 16px;
+    }
+
+    .search-form {
+        padding: 22px;
+    }
+
+    .search-form__header h1 {
+        font-size: 28px;
+    }
 }

@@ -24,3 +24,5 @@ export interface PlayerSeasonStatistic {
     'squad-fpp': GameModeStats;
   };
 }
+
+export type GameMode = keyof PlayerSeasonStatistic['gamemodeStats'];

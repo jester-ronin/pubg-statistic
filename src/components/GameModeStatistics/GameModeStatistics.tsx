@@ -1,33 +1,28 @@
 import React from 'react';
-import { Form, Stack } from 'react-bootstrap';
+import { Alert, Form, Stack } from 'react-bootstrap';
 import StatisticsMarkupRender from '../StatisticsMarkupRender/StatisticsMarkupRender';
+import { GameMode, PlayerSeasonStatistic } from '../../model/gameModeStats';
+
+export type LoadStatus = 'idle' | 'loading' | 'success' | 'error';
 
 interface GameModeStatisticsProps {
-  isLoading: boolean;
-  gameMode: string | null;
-  playerSeasonStatistic: any; // Уточните тип playerSeasonStatistic в зависимости от API данных
+  status: LoadStatus;
+  errorMessage: string | null;
+  gameMode: GameMode;
+  playerSeasonStatistic: PlayerSeasonStatistic | null;
   toggleDropDiv: () => void;
   showDropDiv: boolean;
 }
 
-const gameModes: { [key: string]: any } = {
-  '#/solo': 'solo',
-  '#/solo-fpp': 'solo-fpp',
-  '#/duo': 'duo',
-  '#/duo-fpp': 'duo-fpp',
-  '#/squad': 'squad',
-  '#/squad-fpp': 'squad-fpp',
-};
-
 const GameModeStatistics: React.FC<GameModeStatisticsProps> = ({
-  isLoading,
+  status,
+  errorMessage,
   gameMode,
   playerSeasonStatistic,
   toggleDropDiv,
   showDropDiv,
 }) => {
-  
-  if (!isLoading) {
+  if (status === 'loading' || status === 'idle') {
     return (
       <Form className='form-statistic'>
         <Stack gap={4}>
@@ -39,11 +34,22 @@ const GameModeStatistics: React.FC<GameModeStatisticsProps> = ({
     );
   }
 
-  const selectedGameMode = gameModes[gameMode || ''];
-  const selectedStats = playerSeasonStatistic?.gamemodeStats?.[selectedGameMode];
+  if (status === 'error') {
+    return (
+      <Alert className='statistics-alert' variant='danger'>
+        {errorMessage || 'Unable to load player statistics.'}
+      </Alert>
+    );
+  }
 
+  const selectedStats = playerSeasonStatistic?.gamemodeStats?.[gameMode];
+  
   if (!selectedStats) {
-    return null;
+    return (
+      <Alert className='statistics-alert' variant='warning'>
+        No statistics found for this game mode.
+      </Alert>
+    );
   }
 
   return (

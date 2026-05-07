@@ -1,84 +1,213 @@
-html,
-body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-}
-
 .main-div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     position: relative;
     min-height: 100vh;
     width: 100%;
+    padding: 40px 0;
     overflow: hidden;
 }
 
 .main-div::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url("D:/JS/React/pubg-statistic/src/assets/pubg.jpg");
-    filter: blur(0.3vh);
-    z-index: -1;
+    inset: -12px;
+    background-image:
+        linear-gradient(90deg, rgba(8, 10, 13, 0.88), rgba(8, 10, 13, 0.58)),
+        url("../../assets/pubg.jpg");
+    background-size: cover;
+    background-position: center;
+    filter: blur(5px);
+    transform: scale(1.02);
+    z-index: 0;
+}
+
+.stats-shell {
+    position: relative;
+    z-index: 1;
+}
+
+.stats-layout {
+    align-items: stretch;
+    gap: 24px 0;
+}
+
+.poster-column {
+    display: flex;
 }
 
 .player-image {
-    width: 37vh;
-    height: 68vh;
-    border-style: solid;
-    border-width: 0.5vh;
-    border-color: white;
+    width: 100%;
+    min-height: 520px;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 8px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
 }
 
+.user-info {
+    color: #171717;
+}
 
-h1 {
+.player-header {
     display: flex;
-    justify-content: center;
-    color: black;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 20px;
+    padding: 24px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.3);
 }
 
+.player-header p {
+    margin: 0 0 6px;
+    color: #b47300;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.player-header h1 {
+    margin: 0;
+    color: #171717;
+    font-size: 36px;
+    line-height: 1.1;
+    overflow-wrap: anywhere;
+}
+
+.player-header span {
+    display: block;
+    margin-top: 8px;
+    color: #6b7280;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
 
 .additional-info-button {
-    margin-top: 1.5vh;
+    width: 100%;
+    margin-top: 16px;
+    font-weight: 700;
 }
 
 .back-link {
-    display: flex;
-    justify-content: end;
     text-decoration: none;
-    color: black;
-    font-size: 2.2vh;
+    color: #171717;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.back-link:hover {
+    color: #b47300;
 }
 
 .info-row {
-    color: black;
-    font-size: 2.5vh;
-    margin-top: 1.5vh;
     display: flex;
+    gap: 16px;
     justify-content: space-between;
-    margin-bottom: 10px;
+    padding: 12px 0;
+    border-bottom: 1px solid #e5e7eb;
+    color: #171717;
+    font-size: 16px;
+}
+
+.info-row:last-child {
+    border-bottom: 0;
+}
+
+.info-label {
+    color: #4b5563;
+}
+
+.info-value {
+    font-weight: 800;
+    text-align: right;
 }
 
 .form-statistic {
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 1.5vh ;
-    border-radius: 1vh;
-    width: 89vh;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 1.0);
-    margin-top: 1vh;
-    padding: 1vh;
-    margin-bottom: 2.5vh;
+    width: 100%;
+    margin-top: 16px;
+    padding: 20px 24px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.3);
 }
 
+.statistics-alert {
+    margin-top: 16px;
+    border-radius: 8px;
+}
 
-.stat-value {
-  margin-left: 10px;
-  text-align: right;
+.stats-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 2px;
+}
+
+.dropdown-toggle {
+    min-width: 160px;
+    font-weight: 700;
+}
+
+#season-dropdown {
+    min-width: 220px;
+}
+
+.season-dropdown-menu {
+    max-height: min(360px, 52vh);
+    overflow-y: auto;
+}
+
+.dropDiv {
+    margin-bottom: 24px;
+}
+
+@media (max-width: 991px) {
+    .main-div {
+        padding: 24px 0;
+    }
+
+    .player-image {
+        min-height: 360px;
+        max-height: 520px;
+    }
+}
+
+@media (max-width: 576px) {
+    .player-header {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .player-header h1 {
+        font-size: 30px;
+    }
+
+    .back-link {
+        white-space: normal;
+    }
+
+    .form-statistic {
+        padding: 18px;
+    }
+
+    .stats-controls {
+        flex-direction: column;
+    }
+
+    .stats-controls .dropdown,
+    .stats-controls .dropdown-toggle {
+        width: 100%;
+    }
+
+    .info-row {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .info-value {
+        text-align: left;
+    }
 }
